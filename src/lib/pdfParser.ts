@@ -44,10 +44,10 @@ let workerPromise: Promise<Worker> | null = null
 function getWorker(): Promise<Worker> {
   if (!workerPromise) {
     workerPromise = createWorker("chi_sim", OEM.LSTM_ONLY, {
-      langPath: "/tessdata",
+      langPath: `${import.meta.env.BASE_URL}tessdata`,
       gzip: true,
-      workerPath: "/tesseract/worker.min.js",
-      corePath: "/tesseract-core",
+      workerPath: `${import.meta.env.BASE_URL}tesseract/worker.min.js`,
+      corePath: `${import.meta.env.BASE_URL}tesseract-core`,
       logger: () => {},
     })
   }
